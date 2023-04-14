@@ -1,6 +1,10 @@
 package com.example.Library.Management.System.Controller;
 
+import com.example.Library.Management.System.DTO.RequestDto.StudentRequestDto;
+import com.example.Library.Management.System.DTO.RequestDto.UpdateStudentMobRequestDto;
+import com.example.Library.Management.System.DTO.ResponseDto.UpdateStudentMobResponseDto;
 import com.example.Library.Management.System.Entity.Student;
+import com.example.Library.Management.System.Exception.StudentNotFoundException;
 import com.example.Library.Management.System.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +18,33 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-    @PostMapping("/add")
-    public String addStudent(@RequestBody Student student){
+//    @PostMapping("/add")
+//    public String addStudent(@RequestBody Student student){
+//
+//        return studentService.addStudent(student);
+//    }
 
-        return studentService.addStudent(student);
+    @PostMapping("/add")
+    public String addStudent(@RequestBody StudentRequestDto studentRequestDto){
+
+        return studentService.addStudent(studentRequestDto);
     }
+
+    @PutMapping("update_mobile")
+    public UpdateStudentMobResponseDto updateMobNo(@RequestBody UpdateStudentMobRequestDto updateStudentMobRequestDto) throws StudentNotFoundException {
+
+
+        return studentService.updateMobNo(updateStudentMobRequestDto);
+    }
+
+    @GetMapping("get_student")
+    public Student getStudentBtId(@RequestParam int id){
+
+        return studentService.getStudentById(id);
+    }
+
+
+
 
 
     // ------------------------------- Home-Work (12-04-2023) --------------------------------------
