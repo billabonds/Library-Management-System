@@ -9,7 +9,9 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "card")
@@ -37,4 +39,11 @@ public class Card {
     @OneToOne
     @JoinColumn                              // written always in child class
     Student student;
+
+    @OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
+    List<Book> bookIssued = new ArrayList<>();
+
+    @OneToMany(mappedBy = "transaction",cascade = CascadeType.ALL)
+    List<Transaction> transactionList = new ArrayList<>();
+
 }

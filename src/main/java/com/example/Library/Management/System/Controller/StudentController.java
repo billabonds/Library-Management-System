@@ -2,6 +2,7 @@ package com.example.Library.Management.System.Controller;
 
 import com.example.Library.Management.System.DTO.RequestDto.StudentRequestDto;
 import com.example.Library.Management.System.DTO.RequestDto.UpdateStudentMobRequestDto;
+import com.example.Library.Management.System.DTO.ResponseDto.StudentResponseDto;
 import com.example.Library.Management.System.DTO.ResponseDto.UpdateStudentMobResponseDto;
 import com.example.Library.Management.System.Entity.Student;
 import com.example.Library.Management.System.Exception.StudentNotFoundException;
@@ -38,16 +39,14 @@ public class StudentController {
     }
 
     @GetMapping("get_student")
-    public Student getStudentBtId(@RequestParam int id){
+    public StudentResponseDto getStudentBtId(@RequestParam int id){
 
         return studentService.getStudentById(id);
     }
 
 
 
-
-
-    // ------------------------------- Home-Work (12-04-2023) --------------------------------------
+    // ------------------------------- Work (12-04-2023) --------------------------------------
 
                     // 1. Delete a student by id
                     // 2. Update the student by id

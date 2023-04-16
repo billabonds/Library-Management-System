@@ -2,10 +2,13 @@ package com.example.Library.Management.System.Service.Impl;
 
 import com.example.Library.Management.System.DTO.RequestDto.StudentRequestDto;
 import com.example.Library.Management.System.DTO.RequestDto.UpdateStudentMobRequestDto;
+import com.example.Library.Management.System.DTO.ResponseDto.CardResponseDto;
+import com.example.Library.Management.System.DTO.ResponseDto.StudentResponseDto;
 import com.example.Library.Management.System.DTO.ResponseDto.UpdateStudentMobResponseDto;
 import com.example.Library.Management.System.Entity.Card;
 import com.example.Library.Management.System.Entity.Student;
 import com.example.Library.Management.System.Enum.CardStatus;
+import com.example.Library.Management.System.Enum.Department;
 import com.example.Library.Management.System.Exception.StudentNotFoundException;
 import com.example.Library.Management.System.Repository.StudentRepository;
 import com.example.Library.Management.System.Service.StudentService;
@@ -13,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -78,9 +82,31 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student getStudentById(int id) {
+    public StudentResponseDto getStudentById(int id) {
 
-        return studentRepository.findById(id).get();
+        Student student = studentRepository.findById(id).get();
+
+        // prepare studentResponseDto
+
+        StudentResponseDto studentResponseDto = new StudentResponseDto();
+
+        studentResponseDto.setId(student.getId());
+        studentResponseDto.setName(student.getName());
+        studentResponseDto.setAge(student.getAge());
+        studentResponseDto.setDepartment(student.getDepartment());
+        studentResponseDto.setMobNo(student.getMobNo());
+
+        CardResponseDto cardResponseDto =  new CardResponseDto();
+
+        cardResponseDto.setId(student.getCard().getId());
+        cardResponseDto.setIssueDate(student.getCard().getIssueDate());
+        cardResponseDto.setUpdateOn(student.getCard().getUpdateOn());
+        cardResponseDto.setCardStatus(student.getCard().getCardStatus());
+        cardResponseDto.setValidTill(student.getCard().getValidTill());
+
+        studentResponseDto.setCardResponseDto(cardResponseDto);
+
+        return studentResponseDto;
     }
 
 

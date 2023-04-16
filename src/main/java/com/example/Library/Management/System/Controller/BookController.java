@@ -21,7 +21,7 @@ public class BookController {
         return bookService.addBook(book);
     }
 
-    // ------------------------------- Home-Work (12-04-2023) --------------------------------------
+    // ------------------------------- Work (12-04-2023) --------------------------------------
 
                 // 1. Find all the books.
                 // 2. Find all the books of a particular authorId.

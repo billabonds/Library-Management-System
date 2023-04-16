@@ -2,6 +2,7 @@ package com.example.Library.Management.System.Service;
 
 import com.example.Library.Management.System.DTO.RequestDto.StudentRequestDto;
 import com.example.Library.Management.System.DTO.RequestDto.UpdateStudentMobRequestDto;
+import com.example.Library.Management.System.DTO.ResponseDto.StudentResponseDto;
 import com.example.Library.Management.System.DTO.ResponseDto.UpdateStudentMobResponseDto;
 import com.example.Library.Management.System.Entity.Student;
 import com.example.Library.Management.System.Exception.StudentNotFoundException;
@@ -16,7 +17,8 @@ public interface StudentService {
 
     public UpdateStudentMobResponseDto updateMobNo(UpdateStudentMobRequestDto updateStudentMobRequestDto) throws StudentNotFoundException;
 
-    public Student getStudentById(int id);
+    public StudentResponseDto getStudentById(int id);
+
 
 
     // ---------------------------------------------------------------------------------
