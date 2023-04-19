@@ -24,11 +24,11 @@ public interface StudentService {
     // ---------------------------------------------------------------------------------
 
 
-    public String deleteStudent(int studentId);
-
-    public String updateStudentId(int studentId);
-
-    public String findStudentId(int studentId);
-
-    public List<String> allStudents(Student student);
+//    public String deleteStudent(int studentId);
+//
+//    public String updateStudentId(int studentId);
+//
+//    public String findStudentId(int studentId);
+//
+//    public List<String> allStudents(Student student);
 }

@@ -71,7 +71,7 @@ public class StudentServiceImpl implements StudentService {
             UpdateStudentMobResponseDto updateStudentMobResponseDto = new UpdateStudentMobResponseDto();
 
             updateStudentMobResponseDto.setName(updateStudent.getName());
-            updateStudentMobResponseDto.setMobNo(updateStudent.getMobNo());
+            updateStudentMobResponseDto.setMobNo(updateStudentMobRequestDto.getMobNo());
 
             return updateStudentMobResponseDto;
         }
@@ -122,28 +122,28 @@ public class StudentServiceImpl implements StudentService {
     // ---------------------------------------------------------------------------------------------
 
 
-    @Override
-    public String deleteStudent(int studentId) {
-
-        return "Student delete successfully";
-    }
-
-    @Override
-    public String updateStudentId(int studentId) {
-        return "Update studentId successfully";
-    }
-
-    @Override
-    public String findStudentId(int studentId) {
-        return "StudentId Found successfully";
-    }
-
-    @Override
-    public List<String> allStudents(Student student) {
-
-        List<String> ans = null;
-
-        return ans;
-    }
+//    @Override
+//    public String deleteStudent(int studentId) {
+//
+//        return "Student delete successfully";
+//    }
+//
+//    @Override
+//    public String updateStudentId(int studentId) {
+//        return "Update studentId successfully";
+//    }
+//
+//    @Override
+//    public String findStudentId(int studentId) {
+//        return "StudentId Found successfully";
+//    }
+//
+//    @Override
+//    public List<String> allStudents(Student student) {
+//
+//        List<String> ans = null;
+//
+//        return ans;
+//    }
 
 }

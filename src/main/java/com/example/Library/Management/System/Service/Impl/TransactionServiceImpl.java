@@ -12,9 +12,10 @@ import com.example.Library.Management.System.Repository.CardRepository;
 import com.example.Library.Management.System.Repository.TransactionRepository;
 import com.example.Library.Management.System.Service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import java.sql.Struct;
 import java.util.UUID;
 
 @Service
@@ -28,6 +29,9 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
     TransactionRepository transactionRepository;
+
+    @Autowired
+    private JavaMailSender emailSender;
 
 
     @Override
@@ -92,6 +96,15 @@ public class TransactionServiceImpl implements TransactionService {
         issueBookResponseDto.setTransactionNumber(transaction.getTransactionNumber());
         issueBookResponseDto.setTransactionStatus(transaction.getTransactionStatus());
         issueBookResponseDto.setBookName(book.getTitle());
+
+        String text = "Congrats !" + card.getStudent().getName() + " you have been issued the book " + book.getTitle();
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("bprojectacciojob@gmail.com");
+        message.setTo(card.getStudent().getMobNo());
+        message.setSubject("Issue book");
+        message.setText(text);
+        emailSender.send(message);
 
         return issueBookResponseDto;
     }

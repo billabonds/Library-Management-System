@@ -40,10 +40,10 @@ public class Card {
     @JoinColumn                              // written always in child class
     Student student;
 
-    @OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
     List<Book> bookIssued = new ArrayList<>();
 
-    @OneToMany(mappedBy = "transaction",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
     List<Transaction> transactionList = new ArrayList<>();
 
 }

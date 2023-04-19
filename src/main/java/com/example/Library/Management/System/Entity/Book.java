@@ -31,7 +31,7 @@ public class Book {
 
     private int price;
 
-    private boolean isIssued = false;
+    private boolean isIssued;
 
     @ManyToOne
     @JoinColumn

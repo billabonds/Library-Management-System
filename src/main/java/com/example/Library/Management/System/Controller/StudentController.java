@@ -6,6 +6,7 @@ import com.example.Library.Management.System.DTO.ResponseDto.StudentResponseDto;
 import com.example.Library.Management.System.DTO.ResponseDto.UpdateStudentMobResponseDto;
 import com.example.Library.Management.System.Entity.Student;
 import com.example.Library.Management.System.Exception.StudentNotFoundException;
+import com.example.Library.Management.System.Repository.StudentRepository;
 import com.example.Library.Management.System.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,9 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
+    @Autowired
+    private StudentRepository studentRepository;
+
 //    @PostMapping("/add")
 //    public String addStudent(@RequestBody Student student){
 //
@@ -31,14 +35,14 @@ public class StudentController {
         return studentService.addStudent(studentRequestDto);
     }
 
-    @PutMapping("update_mobile")
+    @PutMapping("/update_mobile")
     public UpdateStudentMobResponseDto updateMobNo(@RequestBody UpdateStudentMobRequestDto updateStudentMobRequestDto) throws StudentNotFoundException {
 
 
         return studentService.updateMobNo(updateStudentMobRequestDto);
     }
 
-    @GetMapping("get_student")
+    @GetMapping("/get_student")
     public StudentResponseDto getStudentBtId(@RequestParam int id){
 
         return studentService.getStudentById(id);
@@ -55,27 +59,27 @@ public class StudentController {
 
     // ---------------------------------------------------------------------------------------------
 
-    @DeleteMapping("/delete")                                                                    // 1st API
-    public String deleteStudent(@RequestParam int studentId){
-
-        return studentService.deleteStudent(studentId);
-    }
-
-    @PutMapping("/updateId")                                                                     // 2nd API
-    public String updateStudentId(@RequestParam int studentId){
-
-        return studentService.updateStudentId(studentId);
-    }
-
-    @GetMapping("/findStudentId")                                                                // 3rd API
-    public String findStudentId(@RequestParam int studentId){
-
-        return studentService.findStudentId(studentId);
-    }
-
-    @GetMapping("allStudents")                                                                   // 4th API
-    public List<String> allStudents(@RequestBody Student student){
-
-        return studentService.allStudents(student);
-    }
+//    @DeleteMapping("/delete")                                                                    // 1st API
+//    public String deleteStudent(@RequestParam int studentId){
+//
+//        return studentService.deleteStudent(studentId);
+//    }
+//
+//    @PutMapping("/updateId")                                                                     // 2nd API
+//    public String updateStudentId(@RequestParam int studentId){
+//
+//        return studentService.updateStudentId(studentId);
+//    }
+//
+//    @GetMapping("/findStudentId")                                                                // 3rd API
+//    public String findStudentId(@RequestParam int studentId){
+//
+//        return studentService.findStudentId(studentId);
+//    }
+//
+//    @GetMapping("allStudents")                                                                   // 4th API
+//    public List<String> allStudents(@RequestBody Student student){
+//
+//        return studentService.allStudents(student);
+//    }
 }
