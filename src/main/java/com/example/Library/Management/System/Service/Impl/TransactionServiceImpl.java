@@ -97,10 +97,10 @@ public class TransactionServiceImpl implements TransactionService {
         issueBookResponseDto.setTransactionStatus(transaction.getTransactionStatus());
         issueBookResponseDto.setBookName(book.getTitle());
 
-        String text = "Congrats !" + card.getStudent().getName() + " you have been issued the book " + book.getTitle();
+        String text = "Congrats !  " + card.getStudent().getName() + " You have been issued the book " + book.getTitle();
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("bprojectacciojob@gmail.com");
+        message.setFrom("libraryprojectapril@gmail.com");
         message.setTo(card.getStudent().getMobNo());
         message.setSubject("Issue book");
         message.setText(text);

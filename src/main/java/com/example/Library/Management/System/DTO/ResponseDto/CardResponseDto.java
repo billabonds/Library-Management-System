@@ -30,5 +30,4 @@ public class CardResponseDto {
     private CardStatus cardStatus;
 
     private String validTill;
-
 }
